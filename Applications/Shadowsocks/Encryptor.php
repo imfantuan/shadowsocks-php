@@ -66,7 +66,7 @@ class Encryptor
         $this->_onceMode = $onceMode;
         $iv_len = $this->getCipherLen($this->_method);
         $iv_len = $iv_len[1];
-        $iv = openssl_random_pseudo_bytes($iv_len);
+        $iv = $iv_len ? openssl_random_pseudo_bytes($iv_len) : null;
         $this->_cipher = $this->getCipher($this->_password, $this->_method, 1, $iv);
     }
 
